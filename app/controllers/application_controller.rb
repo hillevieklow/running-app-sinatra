@@ -9,6 +9,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
+    session.clear
     erb :index
   end
 
@@ -22,15 +23,4 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-
-
-
-
-  # get '/runs/index' do
-  #   erb :'runs/index'
-  # end
-  #
-  # get '/formatting/layout' do
-  #   erb :'/formatting/layout'
-  # end
 end
