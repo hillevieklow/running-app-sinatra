@@ -3,32 +3,37 @@ class UsersController < ApplicationController
     erb :'users/signup'
   end
 
-  post '/signup' do
-   if params[:username] == "" || params[:email] == "" || params[:password] == ""
-     erb :'users/signup'
+  post "/signup" do
+    @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
+    if @user.save && params[:username] != "" && params[:email] != ""
+      session[:user_id] = @user.id
+      redirect '/runs/home'
     else
-     @user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
-     session[:user_id] = @user.id
-     redirect '/runs/home'
+      redirect '/signup'
     end
   end
 
   get '/login' do
-    if logged_in?
-      redirect '/runs/home'
-    else
-      erb :'users/login'
-    end
+    erb :'users/login'
   end
 
   post '/login' do
     user = User.find_by(:username => params[:username])
     if user && user.authenticate(params[:password])
-    session[:user_id] = user.id
-    redirect "/runs/home"
-  else
-    erb :'users/signup'
-   end
- end
+      session[:user_id] = user.id
+      redirect "/runs/home"
+    else
+      erb :'users/signup'
+    end
+  end
+
+  get '/logout' do
+    if logged_in?
+      session.clear
+      redirect '/login'
+    else
+      redirect '/'
+    end
+  end
 
 end
