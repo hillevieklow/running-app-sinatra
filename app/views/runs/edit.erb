@@ -1,0 +1,16 @@
+<h2>Edit your Run</h2>
+
+<form method="post" action="/runs/<%=@run.id%>">
+
+
+ <div><label>Run Time:</label>
+ <input type="text" value="<%=@run.time%>" name="time"></div>
+ <br></br>
+ <div><label>Run Distance:</label>
+ <input type="text" value="<%=@run.distance%>" name="distance"></div>
+  <br></br>
+ <div><label>Run Description:</label>
+ <input type="text" value="<%=@run.description%>" name="description"></div>
+  <br></br>
+  <input type="submit" value="Update">
+</form>
