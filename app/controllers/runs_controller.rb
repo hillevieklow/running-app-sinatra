@@ -35,7 +35,39 @@ class RunsController < ApplicationController
         redirect '/runs/home'
       end
     else
+      redirect 'users/login'
+    end
+  end
+
+  post '/runs/:id' do
+    @run = Run.find_by_id(params[:id])
+    @run.time = params[:time]
+    @run.distance = params[:distance]
+    @run.description = params[:description]
+    @run.save
+    redirect '/runs/#{@run.id}'
+  end
+
+  get '/runs/:id/:edit' do
+    if logged_in?
+      @run = Run.find_by_id(params[:id])
+      if current_user.id == @run.user_id
+        erb :'runs/edit'
+      else
+        redirect '/runs/home'
+      end
+    else
       redirect '/login'
+    end
+  end
+
+  delete '/runs/:id/delete' do
+    @run = Run.find(params[:id])
+    if @run.user_id == current_user.id
+      run.delete
+      redirect '/runs/home'
+    else
+      erb :'/runs/home'
     end
   end
 
