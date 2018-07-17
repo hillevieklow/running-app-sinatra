@@ -1,0 +1,14 @@
+<h3> Description: <%= @run.description %></h3>
+
+<ul>Time:  <%= @run.time %> minutes</ul>
+<ul>Distance:  <%= @run.distance %> miles</ul>
+
+
+<h4 class="edit"><a href="/runs/<%= @run.id %>/edit">Edit Run</a></h4>
+
+<form action="/runs/<%= @run.id %>/delete" method="post">
+
+<input id="hidden" type="hidden" name ="_method" value="delete">
+
+<input type="submit" value="Delete Run" name="Delete Run">
+</form>
