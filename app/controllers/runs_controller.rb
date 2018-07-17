@@ -1,8 +1,5 @@
 class RunsController < ApplicationController
-  get '/signup' do
-    erb :'users/signup'
-  end
-  get '/login' do
-    erb :'users/login'
+  get '/runs/home' do
+    erb :'/runs/home'
   end
 end
