@@ -30,10 +30,24 @@ class UsersController < ApplicationController
   get '/logout' do
     if logged_in?
       session.clear
-      redirect 'users/login'
+      redirect '/login'
     else
       redirect '/'
     end
+  end
+
+  get '/users' do
+    if logged_in?
+      @users = User.all
+      erb :'users/all'
+    else
+      redirect '/users/login'
+    end
+  end
+
+  get '/users/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    erb :'users/run_log'
   end
 
 end
