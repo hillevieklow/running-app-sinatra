@@ -45,7 +45,7 @@ class RunsController < ApplicationController
     @run.distance = params[:distance]
     @run.description = params[:description]
     @run.save
-    redirect '/runs/#{@run.id}'
+    redirect "/runs/#{@run.id}"
   end
 
   get '/runs/:id/:edit' do
@@ -61,13 +61,16 @@ class RunsController < ApplicationController
     end
   end
 
-  delete '/runs/:id/delete' do
+  post '/runs/:id/delete' do
     @run = Run.find(params[:id])
-    if @run.user_id == current_user.id
-      run.delete
-      redirect '/runs/home'
-    else
-      erb :'/runs/home'
+    @user = current_user
+    if logged_in?
+      if @run.user_id == current_user.id
+        @run.delete
+        redirect '/runs/home'
+      else
+        erb :'/'
+      end
     end
   end
 
