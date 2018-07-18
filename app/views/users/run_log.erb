@@ -7,7 +7,7 @@
 <%else%>
   <% @user.runs.each do |run| %>
     <ul class="run-log">
-      <li>Description: <a href="/runs/<%=run.id%>"><%= run.description %></a></li>
+      <strong><li>Description: <a href="/runs/<%=run.id%>"><%= run.description %></a></li></strong>
       <li>Run Time: <%= run.time %> minutes</li>
       <li>Run Distance: <%= run.distance %> miles</li>
     </ul>
