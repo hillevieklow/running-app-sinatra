@@ -2,5 +2,6 @@
 
 <h2>Here are the community's latest runs:</h2>
 <% @runs.each do |run| %>
-<ul><%= run.description %></ul>
+<ul><%= run.description %> - <%= run.time %> minutes - <%= run.distance %> miles</ul>
+<br>
 <% end %>
