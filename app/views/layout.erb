@@ -62,6 +62,7 @@
     <br><br>
     <% if logged_in? %>
       <ul class="nav">
+        <li><a href="/runs/home">Home</a></li>
         <li><a href="/runs/new">Add Run</a></li>
         <li><a href="/users/<%=current_user.slug%>">My Running Log</a></li>
         <li><a href="/users">All Users</a></li>
