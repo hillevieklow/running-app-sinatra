@@ -1,8 +1,16 @@
-<h1><%= @user.username %>'s Running Log: </h1>
+<%if @user == current_user %>
+  <h1>Your Running Log: </h1>
+ <%else%>
+   <h1><%= @user.username %>'s Running Log: </h1>
+ <%end%>
 
 <%if @user.runs.empty? %>
   <p>
-     You don't have any runs recorded yet.
+     <%if @user == current_user %>
+       <p>You don't have any runs recorded yet.</p>
+      <%else%>
+        <p><%=@user.username %> don't have any runs recorded yet.</p>
+      <%end%>
   </p>
 <%else%>
   <% @user.runs.each do |run| %>
