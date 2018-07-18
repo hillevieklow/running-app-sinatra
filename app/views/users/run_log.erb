@@ -1,9 +1,15 @@
 <h1><%= @user.username %>'s Running Log: </h1>
 
-<% @user.runs.each do |run| %>
-<ul class="run-log">
-  <li>Description: <a href="/runs/<%=run.id%>"><%= run.description %></a></li>
-  <li>Run Time: <%= run.time %> minutes</li>
-  <li>Run Distance: <%= run.distance %> miles</li>
-  </ul>
+<%if @user.runs.empty? %>
+  <p>
+     You don't have any runs recorded yet.
+  </p>
+<%else%>
+  <% @user.runs.each do |run| %>
+    <ul class="run-log">
+      <li>Description: <a href="/runs/<%=run.id%>"><%= run.description %></a></li>
+      <li>Run Time: <%= run.time %> minutes</li>
+      <li>Run Distance: <%= run.distance %> miles</li>
+    </ul>
+  <%end%>
 <%end%>
