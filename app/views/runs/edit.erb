@@ -1,12 +1,35 @@
+<head>
+  <script>
+  function validateForm() {
+      var x = document.forms["editRun"]["time"].value;
+      var y = document.forms["editRun"]["distance"].value;
+      var z = document.forms["editRun"]["description"].value;
+      if (x <= 0 || x == null) {
+          alert("Invalid or missing time input. Please try again with a valid entry.");
+          return false;
+      }
+      if (y <= 0 || y == null) {
+          alert("Invalid or missing distance input. Please try again with a valid entry.");
+          return false;
+      }
+      if (z==""){
+        alert("Please insert run description.")
+        return false;
+      }
+
+  }
+  </script>
+</head>
+
 <h2>Edit your Run</h2>
 
-<form method="post" action="/runs/<%=@run.id%>">
+<form name="editRun" method="post" action="/runs/<%=@run.id%>" onsubmit="return validateForm()">
 
 
- <div><label>Run Time:</label>
+ <div><label>Run Time (minutes):</label>
  <input type="text" value="<%=@run.time%>" name="time"></div>
  <br></br>
- <div><label>Run Distance:</label>
+ <div><label>Run Distance (miles):</label>
  <input type="text" value="<%=@run.distance%>" name="distance"></div>
   <br></br>
  <div><label>Run Description:</label>
