@@ -1,40 +1,36 @@
 <head>
-<script>
-function validateForm() {
-    var x = document.forms["newRun"]["time"].value;
-    var y = document.forms["newRun"]["distance"].value;
-    var z = document.forms["newRun"]["description"].value;
-    if (x <= 0 || x == null) {
-        alert("Invalid or missing time input. Please try again with a valid entry.");
+  <script>
+  function validateForm() {
+      var x = document.forms["newRun"]["time"].value;
+      var y = document.forms["newRun"]["distance"].value;
+      var z = document.forms["newRun"]["description"].value;
+      if (x <= 0 || x == null) {
+          alert("Invalid or missing time input. Please try again with a valid entry.");
+          return false;
+      }
+      if (y <= 0 || y == null) {
+          alert("Invalid or missing distance input. Please try again with a valid entry.");
+          return false;
+      }
+      if (z==""){
+        alert("Please insert run description.")
         return false;
-    }
-    if (y <= 0 || y == null) {
-        alert("Invalid or missing distance input. Please try again with a valid entry.");
-        return false;
-    }
-    if (z==""){
-      alert("Please insert run description.")
-      return false;
-    }
+      }
 
-}
-</script>
+  }
+  </script>
 </head>
-
-
-<h2>Insert statistics about your run below:</h2>
-
-<form name="newRun" method="post" action="/runs/new" onsubmit="return validateForm()">
-  <p><label>Run Time (minutes):</label></p>
-  <input type="text" name="time">
-
-  <br></br>
-  <p><label>Run Distance (miles):</label></p>
-  <input type="text" name="distance">
-
-  <br></br>
-  <p><label>Run Description:</label></p>
-  <input type="text" name="description">
-
-  <input type="submit" value="Submit">
-</form>
+<body>
+  <h2>Insert information about your run below:</h2>
+  <form name="newRun" method="post" action="/runs/new" onsubmit="return validateForm()">
+    <p><label>Run Time (minutes):</label></p>
+    <input type="text" name="time">
+    <br></br>
+    <p><label>Run Distance (miles):</label></p>
+    <input type="text" name="distance">
+    <br></br>
+    <p><label>Run Description:</label></p>
+    <input type="text" name="description">
+    <input type="submit" value="Submit">
+  </form>
+</body>

@@ -20,20 +20,18 @@
   }
   </script>
 </head>
-
-<h2>Edit your Run</h2>
-
-<form name="editRun" method="post" action="/runs/<%=@run.id%>" onsubmit="return validateForm()">
-
-
- <div><label>Run Time (minutes):</label>
- <input type="text" value="<%=@run.time%>" name="time"></div>
- <br></br>
- <div><label>Run Distance (miles):</label>
- <input type="text" value="<%=@run.distance%>" name="distance"></div>
-  <br></br>
- <div><label>Run Description:</label>
- <input type="text" value="<%=@run.description%>" name="description"></div>
-  <br></br>
-  <input type="submit" value="Update">
-</form>
+<body>
+  <h2>Edit your Run</h2>
+  <form name="editRun" method="post" action="/runs/<%=@run.id%>" onsubmit="return validateForm()">
+   <div><label>Run Time (minutes ):</label>
+   <input type="text" value="<%=@run.time%>" name="time"></div>
+   <br></br>
+   <div><label>Run Distance (miles):</label>
+   <input type="text" value="<%=@run.distance%>" name="distance"></div>
+    <br></br>
+   <div><label>Run Description:</label>
+   <input type="text" value="<%=@run.description%>" name="description"></div>
+    <br></br>
+    <input type="submit" value="Update">
+  </form>
+</body>
