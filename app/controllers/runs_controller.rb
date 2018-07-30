@@ -41,11 +41,16 @@ class RunsController < ApplicationController
 
   post '/runs/:id' do
     @run = Run.find_by_id(params[:id])
-    @run.time = params[:time]
-    @run.distance = params[:distance]
-    @run.description = params[:description]
-    @run.save
-    redirect "/runs/#{@run.id}"
+    if current_user.id == @run.user_id
+      @run = Run.find_by_id(params[:id])
+      @run.time = params[:time]
+      @run.distance = params[:distance]
+      @run.description = params[:description]
+      @run.save
+      redirect "/runs/#{@run.id}"
+    else
+      redirect '/'
+    end
   end
 
   get '/runs/:id/:edit' do
@@ -69,7 +74,7 @@ class RunsController < ApplicationController
         @run.delete
         redirect '/runs/home'
       else
-        erb :'/'
+        redirect '/'
       end
     end
   end
