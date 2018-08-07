@@ -1,6 +1,6 @@
 <h1>Hi there, <%= current_user.username %>! </h1>
 
-<h2>Here are the community's latest runs:</h2>
+<h2>Here is the community's latest runs:</h2>
 <% @runs.each do |run| %>
 <ul><%= run.description %> - <%= run.time %> minutes - <%= run.distance %> miles</ul>
 <br>
