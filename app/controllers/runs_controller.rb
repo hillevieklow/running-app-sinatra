@@ -74,7 +74,7 @@ class RunsController < ApplicationController
         @run.delete
         redirect '/runs/home'
       else
-        redirect '/'
+        redirect '/runs/home'
       end
     end
   end
