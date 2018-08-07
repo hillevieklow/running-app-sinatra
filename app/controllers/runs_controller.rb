@@ -66,7 +66,7 @@ class RunsController < ApplicationController
     end
   end
 
-  post '/runs/:id/delete' do
+  delete '/runs/:id/delete' do
     @run = Run.find(params[:id])
     @user = current_user
     if logged_in?
